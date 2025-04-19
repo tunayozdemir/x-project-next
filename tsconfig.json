@@ -23,5 +23,17 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#1E40AF",
+        "secondary": {
+          "100": "#E0E7FF",
+          "200": "#C7D2FE",
+          "300": "#A5B4FC",
+        },
+      },
+    },
+  },
 }
