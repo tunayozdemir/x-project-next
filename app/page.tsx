@@ -1,8 +1,11 @@
 
+import { Header, Footer } from "../components";
+
 export default function Home() {
   return (
-    <div className="bg-primary px-4 py-2 rounded">
-      test
+    <div className="bg-red-400">
+      <Header/>
+      <Footer/>
     </div>
   );
 }
