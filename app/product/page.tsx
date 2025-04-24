@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Card } from "@/components";
 
 const products = [
   {
@@ -27,32 +28,21 @@ const products = [
   },
 ];
 
-
 export default function ProductsPage() {
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4">
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {products.map((product) => (
-          <Link
-            href={`/product/${product.id}`}
-            key={product.id}
-            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-          >
-            <div className="w-full h-64 relative">
-              <Image
-                src={product.imageUrl}
-                alt={product.title}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="p-4">
-              <h2 className="text-xl font-semibold text-gray-800">{product.title}</h2>
-              <p className="text-gray-600 mt-2">{product.description}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+    <div className=" bg-gray-100 py-10 px-4 flex">
+      {products.map((product) => (
+        <Link
+          href={`/product/${product.id}`}
+          key={product.id}
+          className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+        >
+          <Card
+            src={product.imageUrl}
+            alt={product.title}
+          />
+        </Link>
+      ))}
     </div>
   );
 }

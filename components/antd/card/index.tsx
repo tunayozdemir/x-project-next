@@ -1,49 +1,58 @@
-// app/product/[productId]/page.tsx
+import React from 'react'
+import { Card as AntCard } from 'antd'
+import Image from 'next/image'
 
-import Image from "next/image";
-
-const products = [
-  {
-    id: "1",
-    title: "title 1",
-    imageUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-    description: "aaa",
-    text: "deneme",
-  },
-  {
-    id: "2",
-    title: "title 2",
-    imageUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-    description: "bbb",
-    text: "denmeler",
-  },
-];
-
-interface Props {
-  params: {
-    productId: string;
-  };
+export interface CardPropsType {
+  alt?: string
+  src?: string
+  width?: number
+  height?: number
+  title?: string
+  description?: string
+  imageUrl?: string
+  style?: React.CSSProperties
 }
 
-export default function ProductDetail({ params }: Props) {
-  const product = products.find((item) => item.id === params.productId);
+const defaultProps: Partial<CardPropsType> = {
+  alt: 'example',
+  src: 'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png',
+  width: 200,
+  height: 100,
+  title: 'Card title',
+  description: 'This is the description',
+  style: { width: 240 },
+}
+const Card: React.FC<CardPropsType> = ({
 
-  if (!product) throw new Error("Ürün bulunamadı");
-
+  alt = defaultProps.alt,
+  src = defaultProps.src,
+  width = defaultProps.width,
+  height = defaultProps.height,
+  title = defaultProps.title,
+  description = defaultProps.description,
+  style = defaultProps.style,
+  
+}) => {
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4 flex items-center justify-center">
-      <div className="bg-white shadow-xl rounded-xl p-8 max-w-2xl w-full">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">{product.title}</h1>
-        <Image
-          src={product.imageUrl}
-          alt={product.title}
-          width={300}
-          height={300}
-          className="rounded-lg shadow-md mb-6"
-        />
-        <p className="text-gray-600 text-lg mb-4">{product.description}</p>
-        <div className="p-4 bg-gray-100 rounded-md text-gray-700">{product.text}</div>
-      </div>
-    </div>
-  );
+    <AntCard
+      hoverable
+      style={style}
+      title={title}
+      cover={
+        src ? (
+          <Image
+            alt={alt || ''}
+            src={src}
+            width={width}
+            height={height}
+          />
+        ) : null
+      }
+    >
+      {description && <p>{description}</p>}
+    </AntCard>
+  )
+  
 }
+
+export default Card
