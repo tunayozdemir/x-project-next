@@ -1,7 +1,4 @@
-// app/products/page.tsx
-
 import Link from "next/link";
-import Image from "next/image";
 import { Card } from "@/components";
 
 const products = [
@@ -30,12 +27,11 @@ const products = [
 
 export default function ProductsPage() {
   return (
-    <div className=" bg-gray-100 py-10 px-4 flex">
+    <div className=" bg-gray-100 flex p-10 flex-wrap">
       {products.map((product) => (
         <Link
           href={`/product/${product.id}`}
           key={product.id}
-          className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
         >
           <Card
             src={product.imageUrl}

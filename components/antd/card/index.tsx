@@ -11,6 +11,7 @@ export interface CardPropsType {
   description?: string
   imageUrl?: string
   style?: React.CSSProperties
+  className?: string
 }
 
 const defaultProps: Partial<CardPropsType> = {
@@ -21,6 +22,7 @@ const defaultProps: Partial<CardPropsType> = {
   title: 'Card title',
   description: 'This is the description',
   style: { width: 240 },
+  className:"rounded-xl shadow-xl transition-transform hover:scale-105",
 }
 const Card: React.FC<CardPropsType> = ({
 
@@ -31,10 +33,12 @@ const Card: React.FC<CardPropsType> = ({
   title = defaultProps.title,
   description = defaultProps.description,
   style = defaultProps.style,
-  
+  className = defaultProps.className,
+
 }) => {
   return (
     <AntCard
+      className={className}
       hoverable
       style={style}
       title={title}
@@ -52,7 +56,7 @@ const Card: React.FC<CardPropsType> = ({
       {description && <p>{description}</p>}
     </AntCard>
   )
-  
+
 }
 
 export default Card
