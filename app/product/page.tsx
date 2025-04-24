@@ -27,7 +27,7 @@ const products = [
 
 export default function ProductsPage() {
   return (
-    <div className=" bg-gray-100 flex p-10 flex-wrap">
+    <div className=" bg-gray-100 flex p-10 flex-wrap justify-between mt-not-first-row">
       {products.map((product) => (
         <Link
           href={`/product/${product.id}`}

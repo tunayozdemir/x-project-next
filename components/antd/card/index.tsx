@@ -22,7 +22,7 @@ const defaultProps: Partial<CardPropsType> = {
   title: 'Card title',
   description: 'This is the description',
   style: { width: 240 },
-  className:"rounded-xl shadow-xl transition-transform hover:scale-105",
+  className:"rounded-xl shadow-xl transition-transform hover:scale-105"
 }
 const Card: React.FC<CardPropsType> = ({
 
